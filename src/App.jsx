@@ -3,6 +3,8 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
 import Technology from './pages/Technology';
+import Products from './pages/Products';
+import Contact from './pages/Contact';
 
 function App() {
     return (
