@@ -170,7 +170,9 @@ h3 {
   background: white;
   border: 1px solid var(--color-border);
   padding: 2rem;
-  transition: transform var(--transition), box-shadow var(--transition);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  will-change: transform;
+  /* Optimize performance */
 }
 
 .card:hover {

@@ -2,12 +2,14 @@ import React from 'react';
 import { ArrowRight, Settings, Shield, Truck, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+import heroBg from '../assets/images/hero-bg.png';
+
 const Home = () => {
   return (
     <div className="home-page">
       {/* Hero Section */}
       <section className="hero">
-        <div className="hero-bg"></div>
+        <div className="hero-bg" style={{ backgroundImage: `linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.7)), url(${heroBg})` }}></div>
         <div className="container hero-content">
           <h1 className="hero-title text-light">
             Промышленные решения <br />
@@ -119,7 +121,6 @@ const Home = () => {
           left: 0;
           right: 0;
           bottom: 0;
-          background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.7)), url('/src/assets/images/hero-bg.png');
           background-size: cover;
           background-position: center;
           opacity: 0.6;

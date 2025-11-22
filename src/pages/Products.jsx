@@ -63,43 +63,17 @@ const Products = () => {
         }
 
         .product-card {
-          padding: 2.5rem;
           display: flex;
-          align-items: flex-start;
-          gap: 2rem;
-          transition: all var(--transition-normal);
+          flex-direction: column;
+          height: 100%;
         }
-
-        .product-card:hover {
-          background: rgba(30, 41, 59, 0.9);
-          border-color: var(--color-primary);
-          transform: translateY(-2px);
-        }
-
-        .product-icon-wrapper {
-          background: rgba(255,255,255,0.03);
-          width: 80px;
-          height: 80px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 4px;
-          flex-shrink: 0;
-          border: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .product-info h3 {
-          margin-bottom: 0.75rem;
-          font-size: 1.5rem;
-        }
-
-        .product-info p {
-          line-height: 1.7;
+        
+        .product-header {
+           margin-top: 0;
         }
 
         @media (max-width: 768px) {
           .product-card {
-            flex-direction: column;
             align-items: flex-start;
           }
         }

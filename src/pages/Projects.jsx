@@ -16,7 +16,7 @@ const projects = [
         location: 'г. Брест',
         category: 'Интерьерные решения',
         description: 'Цельностеклянные перегородки и ограждения атриума. Общая площадь остекления 1200 м².',
-        image: 'https://images.unsplash.com/photo-1582037928769-181f2422618e?auto=format&fit=crop&q=80&w=800'
+        image: 'https://images.unsplash.com/photo-1567449303078-57a671c4a335?auto=format&fit=crop&q=80&w=800'
     },
     {
         id: 3,
