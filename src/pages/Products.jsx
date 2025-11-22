@@ -3,47 +3,59 @@ import { Flame, Scissors, Layers, Building, Grid, Shield, Box } from 'lucide-rea
 import productsData from '../data/products.json';
 
 const iconMap = {
-    Flame,
-    Scissors,
-    Layers,
-    Building,
-    Grid,
-    Shield
+  Flame,
+  Scissors,
+  Layers,
+  Building,
+  Grid,
+  Shield
 };
 
 const Products = () => {
-    return (
-        <div className="products-page">
-            <section className="page-header">
-                <div className="container">
-                    <h1>Наши <span className="text-gradient">Услуги</span></h1>
-                    <p className="text-muted">Профессиональная обработка стекла для промышленных и архитектурных задач</p>
-                </div>
-            </section>
+  return (
+    <div className="products-page">
+      <section className="page-header">
+        <div className="container">
+          <h1>Наши <span className="text-gradient">Услуги</span></h1>
+          <p className="text-muted">Профессиональная обработка стекла для промышленных и архитектурных задач</p>
+        </div>
+      </section>
 
-            <section className="products-grid">
-                <div className="container">
-                    <div className="grid grid-cols-2">
-                        {productsData.map((product) => {
-                            const IconComponent = iconMap[product.icon] || Box;
+      <section className="products-grid">
+        <div className="container">
+          <div className="grid grid-cols-2">
+            {productsData.map((product) => {
+              const IconComponent = iconMap[product.icon] || Box;
 
-                            return (
-                                <div key={product.id} className="product-card glass-panel">
-                                    <div className="product-icon-wrapper">
-                                        <IconComponent size={40} className="text-primary" />
-                                    </div>
-                                    <div className="product-info">
-                                        <h3>{product.title}</h3>
-                                        <p className="text-muted">{product.description}</p>
-                                    </div>
-                                </div>
-                            );
-                        })}
+              return (
+                <div key={product.id} className="card product-card">
+                  <div className="product-header" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', marginBottom: '1.5rem' }}>
+                    <div className="product-icon-wrapper" style={{ background: '#f1f5f9', padding: '1rem', borderRadius: '4px' }}>
+                      <IconComponent size={32} className="text-primary" />
                     </div>
-                </div>
-            </section>
+                    <h3 style={{ margin: 0 }}>{product.title}</h3>
+                  </div>
 
-            <style>{`
+                  <p className="text-muted" style={{ marginBottom: '1.5rem' }}>{product.description}</p>
+
+                  {product.specs && (
+                    <div className="specs-box" style={{ background: '#f8fafc', padding: '1rem', borderRadius: '4px', fontSize: '0.9rem' }}>
+                      {Object.entries(product.specs).map(([key, value]) => (
+                        <div key={key} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem', borderBottom: '1px solid #e2e8f0', paddingBottom: '0.25rem' }}>
+                          <span style={{ color: '#64748b', textTransform: 'capitalize' }}>{key.replace('_', ' ')}</span>
+                          <span style={{ fontWeight: 600, color: '#334155' }}>{value}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <style>{`
         .page-header {
           text-align: center;
           padding-bottom: 3rem;
@@ -92,8 +104,8 @@ const Products = () => {
           }
         }
       `}</style>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default Products;

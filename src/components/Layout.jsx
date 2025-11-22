@@ -1,98 +1,110 @@
 import React, { useState } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, Mail, MapPin, Instagram } from 'lucide-react';
+import { Menu, X, Phone, Mail, MapPin, ChevronRight } from 'lucide-react';
 
 const Layout = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const location = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
-    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-    const navLinks = [
-        { name: 'Главная', path: '/' },
-        { name: 'Продукция', path: '/products' },
-        { name: 'Контакты', path: '/contact' },
-    ];
+  const navLinks = [
+    { name: 'Главная', path: '/' },
+    { name: 'Услуги', path: '/products' },
+    { name: 'Проекты', path: '/projects' },
+    { name: 'Технологии', path: '/technology' },
+    { name: 'Контакты', path: '/contact' },
+  ];
 
-    return (
-        <div className="app-container">
-            <header className="header glass-panel">
-                <div className="container header-content">
-                    <Link to="/" className="logo">
-                        <span className="text-gradient">STEKLOCONTACT</span>
-                    </Link>
+  return (
+    <div className="app-container">
+      <header className="header">
+        <div className="container header-content">
+          <Link to="/" className="logo">
+            STEKLOCONTACT
+          </Link>
 
-                    {/* Desktop Navigation */}
-                    <nav className="desktop-nav">
-                        {navLinks.map((link) => (
-                            <Link
-                                key={link.path}
-                                to={link.path}
-                                className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}
-                            >
-                                {link.name}
-                            </Link>
-                        ))}
-                    </nav>
+          {/* Desktop Navigation */}
+          <nav className="desktop-nav">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`nav-link ${location.pathname === link.path ? 'active' : ''}`}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </nav>
 
-                    {/* Mobile Menu Button */}
-                    <button className="mobile-menu-btn" onClick={toggleMenu}>
-                        {isMenuOpen ? <X size={24} color="white" /> : <Menu size={24} color="white" />}
-                    </button>
-                </div>
+          {/* Mobile Menu Button */}
+          <button className="mobile-menu-btn" onClick={toggleMenu}>
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
 
-                {/* Mobile Navigation */}
-                {isMenuOpen && (
-                    <nav className="mobile-nav glass-panel">
-                        {navLinks.map((link) => (
-                            <Link
-                                key={link.path}
-                                to={link.path}
-                                className="mobile-nav-link"
-                                onClick={() => setIsMenuOpen(false)}
-                            >
-                                {link.name}
-                            </Link>
-                        ))}
-                    </nav>
-                )}
-            </header>
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <nav className="mobile-nav">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className="mobile-nav-link"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </nav>
+        )}
+      </header>
 
-            <main>
-                <Outlet />
-            </main>
+      <main>
+        <Outlet />
+      </main>
 
-            <footer className="footer">
-                <div className="container">
-                    <div className="grid grid-cols-3">
-                        <div className="footer-col">
-                            <h3>STEKLOCONTACT</h3>
-                            <p className="text-muted">
-                                Современные решения из стекла для вашего бизнеса и дома.
-                            </p>
-                        </div>
-                        <div className="footer-col">
-                            <h4>Контакты</h4>
-                            <ul className="contact-list">
-                                <li><Phone size={16} /> +375 29 XXX XX XX</li>
-                                <li><Mail size={16} /> info@steklocontact.by</li>
-                                <li><MapPin size={16} /> г. Брест, ул. Примерная, 123</li>
-                            </ul>
-                        </div>
-                        <div className="footer-col">
-                            <h4>Мы в соцсетях</h4>
-                            <div className="social-links">
-                                <a href="#" className="social-link"><Instagram size={24} /></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="footer-bottom">
-                        <p>&copy; {new Date().getFullYear()} Steklocontact. Все права защищены.</p>
-                    </div>
-                </div>
-            </footer>
+      <footer className="footer">
+        <div className="container">
+          <div className="grid grid-cols-4">
+            <div className="footer-col">
+              <h3>STEKLOCONTACT</h3>
+              <p className="text-muted">
+                Промышленная переработка стекла. Комплексные решения для бизнеса и архитектуры.
+              </p>
+            </div>
+            <div className="footer-col">
+              <h4>Навигация</h4>
+              <ul className="footer-links">
+                {navLinks.map(link => (
+                  <li key={link.path}><Link to={link.path}>{link.name}</Link></li>
+                ))}
+              </ul>
+            </div>
+            <div className="footer-col">
+              <h4>Услуги</h4>
+              <ul className="footer-links">
+                <li><Link to="/products">Закалка стекла</Link></li>
+                <li><Link to="/products">Триплекс</Link></li>
+                <li><Link to="/products">Фасады</Link></li>
+              </ul>
+            </div>
+            <div className="footer-col">
+              <h4>Контакты</h4>
+              <ul className="contact-list">
+                <li><Phone size={16} /> +375 29 XXX XX XX</li>
+                <li><Mail size={16} /> info@steklocontact.by</li>
+                <li><MapPin size={16} /> г. Брест, ул. Примерная, 123</li>
+              </ul>
+            </div>
+          </div>
+          <div className="footer-bottom">
+            <p>&copy; {new Date().getFullYear()} Steklocontact. Все права защищены.</p>
+          </div>
+        </div>
+      </footer>
 
-            <style>{`
+      <style>{`
         .app-container {
           min-height: 100vh;
           display: flex;
@@ -100,11 +112,12 @@ const Layout = () => {
         }
 
         .header {
-          position: sticky;
-          top: 1rem;
-          margin: 0 1rem;
-          z-index: 100;
+          background: white;
+          border-bottom: 1px solid var(--color-border);
           padding: 1rem 0;
+          position: sticky;
+          top: 0;
+          z-index: 100;
         }
 
         .header-content {
@@ -116,6 +129,7 @@ const Layout = () => {
         .logo {
           font-size: 1.5rem;
           font-weight: 800;
+          color: var(--color-primary);
           letter-spacing: -0.05em;
         }
 
@@ -126,29 +140,18 @@ const Layout = () => {
 
         .nav-link {
           font-weight: 500;
-          opacity: 0.8;
-          position: relative;
+          color: var(--color-text);
+          font-size: 0.95rem;
         }
 
         .nav-link:hover, .nav-link.active {
-          opacity: 1;
           color: var(--color-primary);
-        }
-
-        .nav-link.active::after {
-          content: '';
-          position: absolute;
-          bottom: -4px;
-          left: 0;
-          width: 100%;
-          height: 2px;
-          background: var(--color-primary);
-          border-radius: 2px;
         }
 
         .mobile-menu-btn {
           display: none;
           background: transparent;
+          color: var(--color-text);
         }
 
         .mobile-nav {
@@ -156,7 +159,8 @@ const Layout = () => {
           top: 100%;
           left: 0;
           right: 0;
-          margin-top: 0.5rem;
+          background: white;
+          border-bottom: 1px solid var(--color-border);
           padding: 1rem;
           display: flex;
           flex-direction: column;
@@ -164,9 +168,8 @@ const Layout = () => {
         }
 
         .mobile-nav-link {
-          padding: 0.5rem;
-          text-align: center;
-          border-bottom: 1px solid rgba(255,255,255,0.05);
+          padding: 0.75rem;
+          border-bottom: 1px solid var(--color-bg-alt);
         }
 
         main {
@@ -174,63 +177,69 @@ const Layout = () => {
         }
 
         .footer {
-          background: #020617;
+          background: #0f172a; /* Dark footer */
+          color: white;
           padding: 4rem 0 2rem;
-          margin-top: 4rem;
-          border-top: 1px solid rgba(255,255,255,0.05);
+          margin-top: auto;
         }
 
-        .footer-col h3 {
-          margin-bottom: 1rem;
+        .footer h3, .footer h4 {
+          color: white;
+          margin-bottom: 1.5rem;
         }
 
-        .footer-col h4 {
-          margin-bottom: 1rem;
-          color: var(--color-text);
+        .footer .text-muted {
+          color: #94a3b8;
         }
 
-        .text-muted {
-          color: var(--color-text-muted);
+        .footer-links {
+          list-style: none;
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+
+        .footer-links a {
+          color: #cbd5e1;
+          transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+          color: white;
+          padding-left: 5px;
         }
 
         .contact-list {
           list-style: none;
           display: flex;
           flex-direction: column;
-          gap: 0.5rem;
+          gap: 1rem;
         }
 
         .contact-list li {
           display: flex;
           align-items: center;
-          gap: 0.5rem;
-          color: var(--color-text-muted);
+          gap: 0.75rem;
+          color: #cbd5e1;
         }
 
         .footer-bottom {
-          margin-top: 3rem;
+          margin-top: 4rem;
           padding-top: 2rem;
-          border-top: 1px solid rgba(255,255,255,0.05);
+          border-top: 1px solid rgba(255,255,255,0.1);
           text-align: center;
-          color: var(--color-text-muted);
+          color: #64748b;
           font-size: 0.875rem;
         }
 
         @media (max-width: 768px) {
-          .desktop-nav {
-            display: none;
-          }
-          .mobile-menu-btn {
-            display: block;
-          }
-          .grid-cols-3 {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-          }
+          .desktop-nav { display: none; }
+          .mobile-menu-btn { display: block; }
+          .grid-cols-4 { grid-template-columns: 1fr; gap: 2rem; }
         }
       `}</style>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default Layout;
