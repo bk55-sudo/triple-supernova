@@ -11,6 +11,27 @@ const iconMap = {
   Shield
 };
 
+const specLabels = {
+  max_size: 'Макс. размер',
+  thickness: 'Толщина',
+  standards: 'Стандарты',
+  accuracy: 'Точность',
+  types: 'Типы',
+  edge: 'Кромка',
+  formula: 'Формула',
+  film: 'Пленка',
+  features: 'Особенности',
+  u_value: 'Теплопроводность',
+  glass_types: 'Типы стекла',
+  application: 'Применение',
+  height: 'Высота',
+  sound_reduction: 'Звукоизоляция',
+  fittings: 'Фурнитура',
+  load: 'Нагрузка',
+  mounting: 'Крепление',
+  glass: 'Стекло'
+};
+
 const Products = () => {
   return (
     <div className="products-page">
@@ -42,7 +63,7 @@ const Products = () => {
                     <div className="specs-box" style={{ background: '#f8fafc', padding: '1rem', borderRadius: '4px', fontSize: '0.9rem' }}>
                       {Object.entries(product.specs).map(([key, value]) => (
                         <div key={key} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem', borderBottom: '1px solid #e2e8f0', paddingBottom: '0.25rem' }}>
-                          <span style={{ color: '#64748b', textTransform: 'capitalize' }}>{key.replace('_', ' ')}</span>
+                          <span style={{ color: '#64748b' }}>{specLabels[key] || key}</span>
                           <span style={{ fontWeight: 600, color: '#334155' }}>{value}</span>
                         </div>
                       ))}

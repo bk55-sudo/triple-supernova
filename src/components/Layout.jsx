@@ -21,7 +21,7 @@ const Layout = () => {
       <header className="header">
         <div className="container header-content">
           <Link to="/" className="logo">
-            STEKLOCONTACT
+            СТЕКЛОКОНТАКТ
           </Link>
 
           {/* Desktop Navigation */}
@@ -68,7 +68,7 @@ const Layout = () => {
         <div className="container">
           <div className="grid grid-cols-4">
             <div className="footer-col">
-              <h3>STEKLOCONTACT</h3>
+              <h3>СТЕКЛОКОНТАКТ</h3>
               <p className="text-muted">
                 Промышленная переработка стекла. Комплексные решения для бизнеса и архитектуры.
               </p>
