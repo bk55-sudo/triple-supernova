@@ -1,5 +1,9 @@
 import React from 'react';
 import { MapPin } from 'lucide-react';
+import projectCapital from '../assets/images/project-capital.png';
+import projectGalleria from '../assets/images/project-galleria.png';
+import projectOffice from '../assets/images/project-office.png';
+import projectResidential from '../assets/images/project-residential.png';
 
 const projects = [
     {
@@ -8,7 +12,7 @@ const projects = [
         location: 'г. Минск',
         category: 'Фасадное остекление',
         description: 'Структурное остекление фасада площадью 2500 м². Использовано мультифункциональное стекло Guardian SunGuard.',
-        image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800'
+        image: projectCapital
     },
     {
         id: 2,
@@ -16,7 +20,7 @@ const projects = [
         location: 'г. Брест',
         category: 'Интерьерные решения',
         description: 'Цельностеклянные перегородки и ограждения атриума. Общая площадь остекления 1200 м².',
-        image: 'https://images.unsplash.com/photo-1567449303078-57a671c4a335?auto=format&fit=crop&q=80&w=800'
+        image: projectGalleria
     },
     {
         id: 3,
@@ -24,7 +28,7 @@ const projects = [
         location: 'г. Гродно',
         category: 'Офисные перегородки',
         description: 'Зонирование open-space пространства с использованием звукоизоляционного триплекса.',
-        image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800'
+        image: projectOffice
     },
     {
         id: 4,
@@ -32,7 +36,7 @@ const projects = [
         location: 'г. Минск',
         category: 'Входные группы',
         description: 'Остекление входных групп и лифтовых холлов. Антивандальное исполнение.',
-        image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=800'
+        image: projectResidential
     }
 ];
 
